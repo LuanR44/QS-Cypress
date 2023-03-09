@@ -19,4 +19,17 @@ describe('Teste de Login na Unisagrado', () => {
     cy.get('#validarUsuario').click();
     cy.contains('Você receberá um email com dados para reset de senha').should('be.visible');
   })
+  it('Redefinir senha portal do aluno com usuário inválido', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login');
+    cy.contains('Esqueceu a senha?').click()
+    cy.get('#login').type('test') // Adicionar o Usuário Errado
+    cy.get('#validarUsuario').click();
+    cy.contains('Seu número de matrícula não existe ou foi digitado incorretamente ou aluno não está ativo').should('be.visible');
+  })
+  it('Redefinir senha portal do aluno com usuário em branco', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login');
+    cy.contains('Esqueceu a senha?').click()
+    cy.get('#validarUsuario').click();
+    cy.contains('Por favor, preencha o campo usuário').should('be.visible');
+  })
 })
