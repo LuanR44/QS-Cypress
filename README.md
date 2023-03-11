@@ -1,6 +1,6 @@
 ## ⚙️ Setup:
 
-To download the project, just run the command:
+To download the project, just run this command:
 
 ```bash
  git clone https://github.com/LuanR44/QS-Cypress
