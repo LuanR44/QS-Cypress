@@ -20,6 +20,7 @@
   "devDependencies": {
     "cypress": "^12.7.0",
     "cypress-dotenv": "^2.0.0",
+    "cypress-xpath": "^2.0.1",
     "dotenv": "^16.0.3"
   }
 }
