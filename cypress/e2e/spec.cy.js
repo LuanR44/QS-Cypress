@@ -32,4 +32,32 @@ describe('Teste de Login na Unisagrado', () => {
     cy.get('#validarUsuario').click(); // Clicar no botão Validar Usuário
     cy.contains('Por favor, preencha o campo usuário').should('be.visible'); // Validar a mensagem de erro
   })
+  it ('Logando com credenciais "."', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login'); // Acessar o Portal do Aluno
+    cy.get('#username').type('.'); // Adicionar o Usuário Errado
+    cy.get('#password').type('.'); // Adicionar a Senha Errada
+    cy.get('#button-login').click(); // Clicar no botão Login
+    cy.contains('Servidor indisponível! Por favor, tente novamente mais tarde').should('be.visible'); // Validar a mensagem de erro
+  })
+  it ('Logando com credenciais "null"', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login'); // Acessar o Portal do Aluno
+    cy.get('#username').type('null'); // Adicionar o Usuário Errado
+    cy.get('#password').type('null'); // Adicionar a Senha Errada
+    cy.get('#button-login').click(); // Clicar no botão Login
+    cy.contains('Usuário ou senha inválidos').should('be.visible'); // Validar a mensagem de erro
+  })
+  it ('Logando com credenciais "undefined"', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login'); // Acessar o Portal do Aluno
+    cy.get('#username').type('undefined'); // Adicionar o Usuário Errado
+    cy.get('#password').type('undefined'); // Adicionar a Senha Errada
+    cy.get('#button-login').click(); // Clicar no botão Login
+    cy.contains('Usuário ou senha inválidos').should('be.visible'); // Validar a mensagem de erro
+  })
+  it ('Logando com credenciais "0"', () => {
+    cy.visit('https://unisagrado.lyceum.com.br/AOnline3/#/login'); // Acessar o Portal do Aluno
+    cy.get('#username').type('0'); // Adicionar o Usuário Errado
+    cy.get('#password').type('0'); // Adicionar a Senha Errada
+    cy.get('#button-login').click(); // Clicar no botão Login
+    cy.contains('Usuário ou senha inválidos').should('be.visible'); // Validar a mensagem de erro
+  })
 })
